@@ -13,12 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-Route::get('/students','StudentController@getData');
-Route::get('/student/{id}','StudentController@show');
-Route::post('/student','StudentController@store');
-Route::put('/student/update/{id}','StudentController@update');
-Route::delete('/student/delete/{id}','StudentController@destroy');
+Route::middleware('auth:api')->get('/students','StudentController@getData');
+Route::middleware('auth:api')->get('/student/{id}','StudentController@show');
+Route::middleware('auth:api')->post('/student','StudentController@store');
+Route::middleware('auth:api')->put('/student/update/{id}','StudentController@update');
+Route::middleware('auth:api')->delete('/student/delete/{id}','StudentController@destroy');
